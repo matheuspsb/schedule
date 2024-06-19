@@ -6,20 +6,24 @@ export default function Labels() {
 
   return (
     <React.Fragment>
-      <p className="text-gray-500 font-bold mt-10">Label</p>
-      {labels.map(({ label: lbl, checked }, idx) => (
-        <label key={idx} className="items-center mt-3 block">
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={() => updateLabel({ label: lbl, checked: !checked })}
-            className={`form-checkbox h-5 w-5 text-${lbl}-400 rounded focus:ring-0 cursor-pointer`}
-          />
-          <span className="ml-2 text-gray-600 capitalize font-semibold">
-            {lbl}
-          </span>
-        </label>
-      ))}
+      <p className="text-gray-500 font-bold mt-10">Eventos</p>
+      {Array.isArray(labels) && labels.length === 0 ? (
+        <p className="mt-2 text-gray-600 text-sm">Nenhum evento agendado</p>
+      ) : (
+        labels.map(({ label: lbl, checked }, idx) => (
+          <label key={idx} className="items-center mt-3 block">
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={() => updateLabel({ label: lbl, checked: !checked })}
+              className={`form-checkbox h-5 w-5 text-${lbl}-400 rounded focus:ring-0 cursor-pointer`}
+            />
+            <span className="ml-2 text-gray-600 capitalize font-semibold">
+              {lbl}
+            </span>
+          </label>
+        ))
+      )}
     </React.Fragment>
   );
 }
