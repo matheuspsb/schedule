@@ -3,10 +3,11 @@ import './App.css';
 import GlobalContext from './context/GlobalContext';
 import { getMonth } from './util'
 
-import CalendarHeader from './components/CalendarHeader';
+import ScheduleHeader from './components/ScheduleHeader';
 import Sidebar from './components/Sidebar';
 import Month from './components/Month';
 import EventModal from './components/EventModal';
+
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth())
@@ -21,7 +22,7 @@ function App() {
       {showEventModal && <EventModal />}
       
       <div className="h-screen flex flex-col">
-        <CalendarHeader />
+        <ScheduleHeader />
         <div className="flex flex-1">
           <Sidebar />
           <Month month={currentMonth} />
