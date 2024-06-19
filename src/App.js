@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './App.css';
+import GlobalContext from './context/GlobalContext';
 import { getMonth } from './util'
 
 import CalendarHeader from './components/CalendarHeader';
@@ -8,6 +9,11 @@ import Month from './components/Month';
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth())
+  const { monthIndex } = useContext(GlobalContext)
+
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex))
+  }, [monthIndex])
 
   return (
     <React.Fragment>
