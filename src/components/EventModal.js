@@ -3,14 +3,13 @@ import GlobalContext from "../context/GlobalContext";
 import {
   createSchedule,
   deleteSchedule,
-  getSchedule,
   updateSchedule,
 } from "../service/schedule-service";
 
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
 export default function EventModal() {
-  const { setShowEventModal, daySelected, dispatchEvent, selectedEvent } =
+  const { setShowEventModal, daySelected, selectedEvent } =
     useContext(GlobalContext);
 
   const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : "");

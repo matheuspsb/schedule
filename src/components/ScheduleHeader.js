@@ -25,8 +25,7 @@ export default function ScheduleHeader() {
 
   return (
     <header className="px-4 py-2 mr-2 flex items-center">
-      <img src={logo} alt="officecom logo" className="w-40" />
-      <h1 className="mr-10 text-xl text-gray-500 font-bold"></h1>
+      <img src={logo} alt="officecom logo" className="w-40 mr-10" />
       <button onClick={handleReset} className="border rounded p-2 px-4 mr-5">
         Today
       </button>
