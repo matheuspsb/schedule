@@ -1,5 +1,11 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
+import {
+  createSchedule,
+  deleteSchedule,
+  getSchedule,
+  updateSchedule,
+} from "../service/schedule-service";
 
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -17,7 +23,7 @@ export default function EventModal() {
       : labelsClasses[0]
   );
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const calendarEvent = {
@@ -25,16 +31,31 @@ export default function EventModal() {
       description,
       label: selectedColor,
       day: daySelected.valueOf(),
-      id: selectedEvent ? selectedEvent.id : Date.now(),
     };
 
     if (selectedEvent) {
-      dispatchEvent({ type: "update", payload: calendarEvent });
+      try {
+        updateSchedule(selectedEvent["id"], calendarEvent);
+        setShowEventModal(false);
+      } catch (error) {
+        console.error("ErrorContext):", error);
+      }
     } else {
-      dispatchEvent({ type: "push", payload: calendarEvent });
+      try {
+        createSchedule(JSON.stringify(calendarEvent));
+      } catch (error) {
+        console.error("Error saving events:", error);
+      }
     }
-
     setShowEventModal(false);
+  }
+
+  async function handleDelete() {
+    try {
+      deleteSchedule(selectedEvent["id"]);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -48,7 +69,7 @@ export default function EventModal() {
             {selectedEvent && (
               <button
                 onClick={() => {
-                  dispatchEvent({ type: "delete", payload: selectedEvent });
+                  handleDelete();
                   setShowEventModal(false);
                 }}
               >

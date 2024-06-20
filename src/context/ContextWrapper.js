@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
+import { getSchedule } from "../service/schedule-service";
 
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
@@ -18,16 +19,13 @@ function savedEventsReducer(state, { type, payload }) {
     case "delete": {
       return state.filter((evt) => evt.id !== payload.id);
     }
+    case "set": {
+      return payload;
+    }
     default: {
       throw new Error(`Unhandled action type: ${type}`);
     }
   }
-}
-
-function initEvents() {
-  const storageEvents = localStorage.getItem("savedEvents");
-  const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
-  return parsedEvents;
 }
 
 export default function ContextWrapper(props) {
@@ -41,7 +39,6 @@ export default function ContextWrapper(props) {
   const [savedEvents, dispatchEvent] = useReducer(
     savedEventsReducer,
     [],
-    initEvents
   );
 
   const filteredEvents = useMemo(() => {
@@ -53,9 +50,19 @@ export default function ContextWrapper(props) {
     );
   }, [savedEvents, labels]);
 
+  // GET
   useEffect(() => {
-    localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
-  }, [savedEvents]);
+    async function fetchEvents() {
+      try {
+        const response = await getSchedule();
+        dispatchEvent({ type: "set", payload: response.data.message });
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    }
+
+    fetchEvents();
+  }, [showEventModal]);
 
   useEffect(() => {
     setLabels((prevLabels) => {
@@ -76,10 +83,10 @@ export default function ContextWrapper(props) {
   }, [smallCalendarMonth]);
 
   useEffect(() => {
-    if(!showEventModal) {
+    if (!showEventModal) {
       setSelectedEvent(null);
     }
-  }, [showEventModal])
+  }, [showEventModal]);
 
   function updateLabel(label) {
     setLabels(labels.map((lbl) => (lbl.label === label.label ? label : lbl)));
