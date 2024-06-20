@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Schedule - Guia de Execução
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao projeto Schedule! Este guia irá levá-lo através dos passos necessários para configurar e iniciar o projeto.
 
-## Available Scripts
+Schedule é uma agenda desenvolvido para organizar sua vida no dia a dia. O sistema permite salvar, filtrar e excluir eventos ou compromissos.
 
-In the project directory, you can run:
+## Pré-requisitos
 
-### `npm start`
+Certifique-se de ter os seguintes softwares instalados em sua máquina:
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Passo a Passo para Execução do Projeto
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. Clone o repositório
 
-### `npm test`
+Para clonar o repositório usando HTTPS, execute o seguinte comando no terminal:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/matheuspsb/schedule.git
+```
 
-### `npm run build`
+Se você preferir usar SSH, execute este comando:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone git@github.com:matheuspsb/schedule.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Instalar Dependências
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Após clonar o repositório em sua máquina local. No terminal, navegue até o diretório do projeto e execute o comando abaixo para instalar todas as dependências necessárias:
 
-### `npm run eject`
+```bash
+yarn install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 4. Iniciar o Projeto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Com todas as dependências instaladas, agora você pode iniciar o projeto com o Yarn. Execute o comando abaixo no terminal:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+yarn start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Comentários sobre o Projeto
 
-## Learn More
+- ### Escolha do Layout:
+  Optei por criar um layout simples e agradável, ideal para organização do dia a dia sem difículdades ou sistemas complexos.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- ### Utilização do JavaScript:
+  Decidi utilizar JavaScript puro neste projeto para aproveitar os benefícios de uma linguagem amplamente suportada e flexível, proporcionando maior compatibilidade e facilidade na manipulação direta do DOM durante o desenvolvimento.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ### Simplicidade na utilização de Hooks e Bibliotecas Externas:
+  Optei por manter o código simples e fácil de entender, evitando a adição de muitas hooks e bibliotecas externas. Apenas utilizei o useState, useEffect, useContext, e useReducer do React, juntamente com a biblioteca dayjs para manipulação de datas. Além disso, criei um GlobalContext que mantém funções, variáveis e estados globais para toda a aplicação, garantindo um código limpo, eficiente e fácil de manter.
