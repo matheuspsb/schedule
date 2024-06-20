@@ -4,16 +4,6 @@ Bem-vindo ao projeto Schedule! Este guia irá levá-lo através dos passos neces
 
 Schedule é uma agenda desenvolvido para organizar sua vida no dia a dia. O sistema permite salvar, filtrar e excluir eventos ou compromissos.
 
-## Funcionalidades
-
-- Tela de carregamento com a logo da InnovateTech
-- Listagem de alunos com paginação, carregando 20 alunos por vez
-- Barra de pesquisa para filtrar alunos pelo primeiro ou segundo nome
-- Modal detalhado com informações completas do aluno
-- Diferenciais:
-  - Filtro por gênero
-  - Cache interno para armazenar a primeira página de resultados
-
 ## Pré-requisitos
 
 Certifique-se de ter os seguintes softwares instalados em sua máquina:
